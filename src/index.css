@@ -1,0 +1,332 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.listOfCities, .favoriteCities {
+  max-height:300px;
+  overflow-Y:overlay;
+}
+
+/*
+  CheckBox style
+*/
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+header {
+  padding:2em 1em 0;
+  text-align:center;
+}
+.checkBox {
+  position:relative;
+  padding:5px 0 10px;
+}
+#toggle_checkbox {
+  display: none;
+}
+label {
+  position:relative;
+  display: block;
+  width: 50px;
+  height: 25px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+label:before {
+  top: 5px;
+  left: 6px;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #7d99df;
+  background:transparent;
+}
+label:after {
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 25px;
+  border: 2px solid #7d99df;
+}
+label:before, label:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  box-sizing: border-box;
+  transition: 0.5s ease top, 0.5s ease left, 0.5s ease right, 0.5s ease width, 0.5s ease height, 0.5s ease border-color, 0.3s ease background;
+}
+#toggle_checkbox:checked + label:before {
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 25px;
+  border-color: #7d99df;
+  background:transparent;
+}
+#toggle_checkbox:checked + label:after {
+  top: 5px;
+  right: 6px;
+  width: 15px;
+  height: 15px;
+  border-color: red;
+}
+#toggle_checkbox:checked + label:after {
+  border-color: #7d99df;
+  background:#7d99df;
+}
+.filters .container .checkBox_wrapp {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  min-width:100%;
+  flex:1 0 100%;
+  margin:0px;
+  padding-left:5px;
+}
+.checkBoxDesc {
+  font-size:12px;
+  margin:0px;
+  font-weight:600;
+}
+
+.app-container {
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+}
+#root {
+  position:relative;
+  min-height:100vh;
+  padding-bottom:70px;
+}
+.container {
+  max-width:800px;
+  margin:auto;
+}
+.filters .container {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  padding:20px 0px 0px;
+}
+.filters .container input,
+.filters .container select {
+  padding:10px;
+  font-size:14px;
+  border-radius:4px;
+  border:1px solid #969696;
+  outline:0;
+  min-width:250px;
+  max-width:100%;
+  margin:0px 5px 10px;
+}
+.filters .container > * {
+  margin:0px 10px;
+  width:33%;
+  flex:1;
+  max-width:290px;
+  box-sizing:border-box;
+}
+.container.lists {
+  display:flex;
+  flex-wrap:wrap;
+}
+.lists ul {
+  max-height:300px;
+  list-style-type:none;
+  padding:0px;
+  margin:0px;
+  flex:1;
+  min-width:250px;
+  border-radius:4px;
+  max-height:0px;
+  transition:max-height 0.3s ease-in-out;
+}
+.container.lists ul.show,
+.container.lists ul.show + ul {
+  max-height:200px;
+  margin:0px 5px 10px;
+  border:1px solid #f1f1f1;
+  transition:max-height 0.3s ease-in-out;
+}
+.lists ul li {
+  padding:5px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.lists ul li:not(:last-child) {
+  border-bottom:1px solid #d6d6d6;
+}
+.favTitle {
+  margin:0;
+  padding: 5px 10px 0px;
+}
+.lists ul li button {
+  background:#7d99df;
+  border:0;
+  outline:0;
+  cursor:pointer;
+  color:#fff;
+  font-weight:600;
+  font-size:16px;
+  border-radius:4px;
+  height:20px;
+  width:21px;
+  line-height:20px;
+}
+.lists ul li .removeBtn {
+  line-height:18px;
+}
+.lists ul li span {
+  padding: 2px 10px;
+  border: 1px solid rgba(125, 153, 223, 0.43);
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 50%;
+}
+.lists ul li span:hover {
+  background:rgba(125, 153, 223, 0.397);
+}
+.weatherWrapper > h3 {
+  padding:30px 10px 20px;
+}
+.daysContainer {
+  display:flex;
+  justify-content: center;
+  flex-wrap:wrap;
+}
+.daysContainer .day {
+  min-width:150px;
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+  border-radius:5px;
+  box-shadow:0 0 2px #999;
+  padding:1em;
+  margin:0px 5px 10px;
+  background:#fbfbfb;
+}
+.daysContainer .day .time {
+  font-weight:500;
+}
+.daysContainer .day img {
+  height:100px;
+  object-fit:contain;
+  display:flex;
+  flex-direction:column;
+}
+.daysContainer .day p {
+  margin:0px;
+  font-size:14px;
+}
+.daysContainer .day .tempDesc {
+  font-size:12px;
+  text-align:left;
+}
+.daysContainer .day .temperature {
+  display:flex;
+  white-space:nowrap;
+  font-size:12px;
+}
+.daysContainer .day.first {
+  flex:0 0 calc(100% - 10px);
+  margin:0px 0px 10px;
+}
+.daysContainer .day.first .time {
+  text-align:left;
+  font-size:20px;
+  font-weight:700;
+  padding-left:10px;
+}
+
+.daysContainer .day.first .innerCont {
+  display:flex;
+  flex-wrap:wrap;
+}
+.daysContainer .day.first b {
+  font-weight:500;
+  color:#353535;
+}
+.daysContainer .day.first .textContent {
+  text-align:left;
+  flex:1;
+}
+.daysContainer .day.first .tempDesc {
+  font-size:14px;
+}
+.daysContainer .day.first .desc {
+  font-weight:700;
+  font-size:14px;
+  text-transform:capitalize;
+  padding:0px 10px 10px;
+}
+.daysContainer .day.first img {
+  margin: 0px 20px;
+}
+.windArrow {
+  font-size:40px;
+  display:inline-block;
+  line-height:10px;
+  transition: all .2s ease-in-out 0s;
+}
+.daysContainer .day.first .group {
+  padding:5px 10px;
+  margin-bottom:5px;
+  border:1px solid #f1f1f1;
+  border-radius:5px;
+  background:#fff;
+}
+.daysContainer .day.first .group.last {
+  margin-bottom:0px;
+}
+.daysContainer .day.first img {
+  border:1px solid #f1f1f1;
+  background:#fff;
+  border-radius:5px;
+  margin: 30px 15px 20px 0px;
+}
+footer {
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  height:50px;
+  font-size:14px;
+  background:#314078;
+  color:#fff;
+}
+footer .container {
+  display:flex;
+  align-items:center;
+  height:100%;
+  padding-left:20px;
+}
+.weatherError {
+  color:#d22525;
+  padding:1em;
+}
+.container.lists ul.listOfCities.show:empty {
+  min-width:0px;
+  border-radius:4px;
+  max-height:0px;
+  border:0;
+  flex:0;
+  margin:0px;
+}
+.container.lists .listOfCities.show:empty ul {
+  margin-left:0px;
+}
+
+@media (min-width:768px) {
+  .lists ul li span {
+    min-width: 200px;
+  }
+}
